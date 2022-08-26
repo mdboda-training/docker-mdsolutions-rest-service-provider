@@ -22,26 +22,26 @@ public class UserController {
 	@Autowired
 	Environment environment;
 
-	@GetMapping("/user/getUsers")
+	@GetMapping("/mdsolutions-rest-service-provider/user/getUsers")
 	public UserDto getUsers(@RequestParam Integer userId) {
 		UserDto userDto= userService.getUser(userId);
 		userDto.setMessage("Port: "+environment.getProperty("server.port"));
 		return userDto;
 	}
 
-	@GetMapping("/user/getAllUsers")
+	@GetMapping("/mdsolutions-rest-service-provider/user/getAllUsers")
 	public List<UserDto> getUsers() {
 		List<UserDto> userDtoList = userService.getUsers();
 		return userDtoList;
 	}
 
-	@GetMapping("/user/deleteUser")
+	@GetMapping("/mdsolutions-rest-service-provider/user/deleteUser")
 	public String getDeleteUser(@RequestParam Integer userId) {
 		userService.deleteUser(userId);
 		return "User Deleted Successfully";
 	}
 	
-	@PostMapping("/user/createUser")
+	@PostMapping("/mdsolutions-rest-service-provider/user/createUser")
 	public UserDto createUser(@RequestBody UserDto userDto) {
 		return userService.createUser(userDto);
 	}
